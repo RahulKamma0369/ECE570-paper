@@ -10,7 +10,7 @@ We conduct experiments on four diverse datasets:
 - **Toxic Comment**: Wikipedia talk-page comments, where toxicity is assessed based on crowd-sourced annotations.
 - **Toxic Tweet**: Tweets collected via the Twitter Streaming API and labeled as toxic or non-toxic based on human ratings.
 
-> **Note:** Since our pickle files used during data preprocessing and embedding steps are larger than 2 GB, GitHub does not allow them to be uploaded. Please refer to the scripts in the repository that describe how these pickle files are created. Once created, these files are read during various processing steps to speed up subsequent experiments.
+> **Note:** Since our pickle files used during data preprocessing and embedding steps are larger than 2 GB, GitHub does not allow them to be uploaded. Please refer to the scripts in the repository that describe how these pickle files are created. Once created, these files are read during various processing steps to speed up subsequent experiments.you can refer on how i've created the pickle files and use those variables to run the scripts, , that's for entire project however, you can test the code with project_demo with_imdb  and project_test_with_imdb to understand and check the code , since this is ran only on imdb dataset, it should not take long except for vectorization tasks 
 
 
 #### Datasets summary

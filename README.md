@@ -1,4 +1,14 @@
-Experiments for EMNLP_2020 paper: **[Identifying Spurious Correlations for Robust Text Classification](https://arxiv.org/pdf/2010.02458.pdf)**
+# Identifying and Mitigating Spurious Correlations in Text Classification
+
+This repository contains the code for our project, which focuses on identifying and mitigating spurious correlations in text classification tasks through causal inference and counterfactual methods. Our approach leverages a matching-based causal framework and applies counterfactual data augmentation to improve model robustness and fairness.
+
+We conduct experiments on four diverse datasets:
+- **IMDB Movie Reviews**: A classic sentiment analysis dataset where movie review sentences are labeled as positive or negative.  
+- **Kindle Reviews**: Product review snippets from the Amazon Kindle Store, with ratings converted into binary sentiment labels (1–2 as negative and 4–5 as positive).
+- **Toxic Comment**: Wikipedia talk-page comments, where toxicity is assessed based on crowd-sourced annotations.
+- **Toxic Tweet**: Tweets collected via the Twitter Streaming API and labeled as toxic or non-toxic based on human ratings.
+
+
 
 #### Datasets summary
  
@@ -11,40 +21,25 @@ Experiments for EMNLP_2020 paper: **[Identifying Spurious Correlations for Robus
 
 
 
+## Project Overview
 
-#### Data structure (class Dataset):
+The key steps in our pipeline include:
+- **Initial Feature Extraction:** Training a bag-of-words logistic regression classifier to identify influential words.
+- **Context Editing and Embedding:** Editing sentences to remove candidate words and generating context-rich representations using BERT.
+- **Matching and Causal Effect Computation:** Identifying control sentences via cosine similarity and computing the Average Treatment Effect (ATE) for each word.
+- **Word-Level Supervised Classification:** Training a lightweight classifier on manually annotated words to predict the spuriousness of each candidate.
+- **Counterfactual Data Augmentation:** Generating augmented training samples by replacing spurious words with appropriate synonyms.
+- **Domain Adaptation and Robustness Evaluation:** Analyzing subgroup performance (majority vs. minority) and evaluating cross-domain transferability.
 
-- X, y, df (dataframe), vec (countvectorizer),  feats(features in vocabulary), moniker (nick name)
-- top_features, top_feature_idx, placebo_features, placebo_feature_idx
-- topwd_sentObj_list, placebowd_sentObj_list (list of **SentenceEdit** objects)
-  - remove_wd 
-  - context
-  - original_sentence_idx
-  - label
-  - embedding (bert last four layers)
-- topwd_sentObj_dict, placebowd_sentObj_dict (map from word to a list of SentenceEdit objects)
-	
-- **ites** (dataframe recording matched sentences)
-  - term (the word being removed)
-  - sentence_id (current sentence idx)
-  - control_obj: the matched control SentenceEdit object
-  - treat_obj: the matched treatment SentenceEdit object
-  - similarity: cosine similarity between context of matched sentences
-  - difference: embedding difference between treat context and control context
-  - ite: treat_label - control_label 
 
-- BAD_POS, BAD_NEG, ALL_BAD, DUMMY_TERM
-	
-- **term_df** (features for word classification)
-  - term
-  - ite_abs_avg / top_5 / top_5_by_sim
-  - similarity_scaled_avg / top_5 / std / max 
-  - closest_pos / neg_similarity_scaled
-  - ite_weighted_scaled
-  - ite_x_similarity_scaled / scaled_top_5
-  - diff_mean / mean_vec / mean_abs
-  - diff_min_mean, diff_max_mean, diff_max_mean_abs
-  - top_diff_mean
-  - coef
-  - pca
+### Create a virtual environment (optional but recommended):
+python -m venv venv
 
+source venv/bin/activate 
+On Windows: venv\Scripts\activate
+
+
+### Install dependencies
+All the required libraries are listed in the requirements.txt file.
+To install them, run:
+pip install -r requirements.txt

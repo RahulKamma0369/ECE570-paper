@@ -37,12 +37,16 @@ The key steps in our pipeline include:
 
 ### Create a virtual environment (optional but recommended):
 python -m venv venv
-
+> **note** - you need to refer your python path here 
 source venv/bin/activate 
 On Windows: venv\Scripts\activate
 
 
 ### Install dependencies
 All the required libraries are listed in the requirements.txt file.
+
 To install them, run:
 pip install -r requirements.txt
+
+make sure you run the above command in your virtual enviromnent
+> **note** - Please be aware that first import will take long to import the modules after installation

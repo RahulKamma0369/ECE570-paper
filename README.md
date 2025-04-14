@@ -2,12 +2,15 @@
 
 This repository contains the code for our project, which focuses on identifying and mitigating spurious correlations in text classification tasks through causal inference and counterfactual methods. Our approach leverages a matching-based causal framework and applies counterfactual data augmentation to improve model robustness and fairness.
 
+
+
 We conduct experiments on four diverse datasets:
 - **IMDB Movie Reviews**: A classic sentiment analysis dataset where movie review sentences are labeled as positive or negative.  
 - **Kindle Reviews**: Product review snippets from the Amazon Kindle Store, with ratings converted into binary sentiment labels (1–2 as negative and 4–5 as positive).
 - **Toxic Comment**: Wikipedia talk-page comments, where toxicity is assessed based on crowd-sourced annotations.
 - **Toxic Tweet**: Tweets collected via the Twitter Streaming API and labeled as toxic or non-toxic based on human ratings.
 
+> **Note:** Since our pickle files used during data preprocessing and embedding steps are larger than 2 GB, GitHub does not allow them to be uploaded. Please refer to the scripts in the repository that describe how these pickle files are created. Once created, these files are read during various processing steps to speed up subsequent experiments.
 
 
 #### Datasets summary

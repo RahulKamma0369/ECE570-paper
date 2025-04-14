@@ -50,4 +50,5 @@ To install them, run:
 pip install -r requirements.txt
 
 make sure you run the above command in your virtual enviromnent
+
 > **note** - Please be aware that first import will take long to import the modules after installation

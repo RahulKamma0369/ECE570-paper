@@ -34,7 +34,7 @@ The key steps in our pipeline include:
 - **Counterfactual Data Augmentation:** Generating augmented training samples by replacing spurious words with appropriate synonyms.
 - **Domain Adaptation and Robustness Evaluation:** Analyzing subgroup performance (majority vs. minority) and evaluating cross-domain transferability.
 
-### the video here for demo 
+### Please refer the video here for demo : https://drive.google.com/file/d/1Xh3f2AM6sLGIvAgsftzVnWc1Npv0OTPa/view?usp=sharing
 
 ### Create a virtual environment (optional but recommended):
 python -m venv venv
